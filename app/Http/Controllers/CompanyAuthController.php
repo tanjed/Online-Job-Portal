@@ -16,8 +16,7 @@ class CompanyAuthController extends Controller
             'password' => 'required'
         ]);
         if (auth('company')->attempt(['email' => $request->email, 'password' => $request->password])){
-           // return redirect()->intended(route('home'));
-            dd('login Success');
+            return redirect()->to(route('company.dashboard.show'));
         }
         return back()->withErrors(["msg" => "Invalid Email or Password"])->withInput($request->only('email'));
     }
@@ -42,7 +41,7 @@ class CompanyAuthController extends Controller
                 'password' => bcrypt($request['password']),
             ]);
             auth('company')->login($company);
-            //return redirect()->to(route('home'));
+            return redirect()->to(route('company.dashboard.show'));
         }
         catch (Exception $e){
             return back()->withErrors(['msg' => 'Something went Wrong!']);

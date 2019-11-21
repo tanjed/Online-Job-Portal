@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration
             $table->string('salary');
             $table->string('location');
             $table->string('country');
+            $table->date('date');
             $table->unsignedBigInteger('company_id');
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');

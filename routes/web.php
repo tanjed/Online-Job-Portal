@@ -21,3 +21,8 @@ Route::post('/login','CompanyAuthController@processLogin')->name('company.login.
 
 Route::get('/register','CompanyAuthController@showRegistration')->name('company.register.show');
 Route::post('/register','CompanyAuthController@processRegistration')->name('company.register.process');
+
+Route::get('/dashboard','CompanyDashController@showDashboard')->name('company.dashboard.show');
+Route::get('/job/{id}/applicants','CompanyDashController@showApplicants')->name('company.applicants.show');
+
+Route::post('/post/job','CompanyDashController@postJob')->name('post.job');
