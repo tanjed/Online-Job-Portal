@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('company.registration');
 });
+
+
+Route::get('/login','CompanyAuthController@showLogin')->name('company.login.show');
+Route::post('/login','CompanyAuthController@processLogin')->name('company.login.process');
+
+Route::get('/register','CompanyAuthController@showRegistration')->name('company.register.show');
+Route::post('/register','CompanyAuthController@processRegistration')->name('company.register.process');

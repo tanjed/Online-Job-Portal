@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'applicant',
         'passwords' => 'users',
     ],
 
@@ -36,14 +36,24 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'company' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'companies',
         ],
 
-        'api' => [
+        'company-api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'companies',
+            'hash' => false,
+        ],
+        'applicant' => [
+            'driver' => 'session',
+            'provider' => 'applicants',
+        ],
+
+        'applicant-api' => [
+            'driver' => 'token',
+            'provider' => 'applicants',
             'hash' => false,
         ],
     ],
@@ -66,9 +76,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'companies' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Company::class,
+        ],
+
+        'applicants' => [
+            'driver' => 'eloquent',
+            'model' => App\Applicant::class,
         ],
 
         // 'users' => [

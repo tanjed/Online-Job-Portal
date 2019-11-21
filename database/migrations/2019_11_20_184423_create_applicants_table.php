@@ -19,8 +19,8 @@ class CreateApplicantsTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('password');
-            $table->string('cv_path');
-            $table->string('img_path');
+            $table->string('cv_path')->nullable();
+            $table->string('img_path')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
