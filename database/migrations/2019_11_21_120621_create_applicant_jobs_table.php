@@ -15,7 +15,11 @@ class CreateApplicantJobsTable extends Migration
     {
         Schema::create('applicant_jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('applicant_id');
             $table->timestamps();
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
         });
     }
 

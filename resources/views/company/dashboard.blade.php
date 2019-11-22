@@ -32,9 +32,9 @@
                             <tr>
                                 <td><a href="{{URL::to('/job/'.$job->id.'/applicants')}}">{{$job->job_title}}</a></td>
                                 <td>{{$job->date}}</td>
-                                <td>23</td>
+                                <td>{{count($job->applicants)}}</td>
                                 <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal" data-id="{{$job->id}}"><i class="fa fa-edit"></i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
@@ -91,8 +91,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" required>
+                                <label id="title2">Title</label>
+                                <input  type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
@@ -137,7 +137,17 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(function(){
+            $('#editEmployeeModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var recipient = button.data('id');
+                var modal = $(this);
+                modal.find('.modal-title').text('New message to ' + recipient);
+                modal.find('.modal-body #tile2').html(recipient);
+            });
+        });
+    </script>
 
 
 

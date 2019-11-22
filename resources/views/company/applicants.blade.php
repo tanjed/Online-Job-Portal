@@ -12,10 +12,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam consequatur dicta explicabo facere id impedit labore, mollitia numquam possimus ut?</td>
-                        <td>110.12.19</td>
-                    </tr>
+                    @foreach($job as $job_applicant)
+                        @foreach($job_applicant->applicants as $applicant)
+                            <tr>
+                                <td>{{$applicant->first_name." ".$applicant->last_name}}</td>
+                                <td><a href="{{URL::to('/show/resume/'.$applicant->id)}}">PDF</a></td>
+                            </tr>
+                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
             </div>

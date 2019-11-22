@@ -26,3 +26,17 @@ Route::get('/dashboard','CompanyDashController@showDashboard')->name('company.da
 Route::get('/job/{id}/applicants','CompanyDashController@showApplicants')->name('company.applicants.show');
 
 Route::post('/post/job','CompanyDashController@postJob')->name('post.job');
+Route::get('/show/resume/{id}','CompanyDashController@showPDF');
+
+
+
+//Applicant Routes
+Route::get('applicant/login','ApplicantAuthController@showLogin')->name('applicant.login.show');
+Route::post('applicant/login','ApplicantAuthController@processLogin')->name('applicant.login.process');
+
+Route::get('applicant/register','ApplicantAuthController@showRegistration')->name('applicant.register.show');
+Route::post('applicant/register','ApplicantAuthController@processRegistration')->name('applicant.register.process');
+
+Route::get('applicant/dashboard','ApplicantDashController@showDashboard')->name('applicant.dashboard.show');
+
+Route::get('job/{id}/description','ApplicantDashController@showJobDescription')->name('job.description');
