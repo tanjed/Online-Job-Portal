@@ -47,4 +47,9 @@ class CompanyAuthController extends Controller
             return back()->withErrors(['msg' => 'Something went Wrong!']);
         }
     }
+    public function logout(Request $request){
+        auth('company')->logout();
+        $request->session()->invalidate();
+        return redirect()->intended(route('company.login.show'));
+    }
 }

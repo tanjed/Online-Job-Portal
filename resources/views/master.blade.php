@@ -17,6 +17,7 @@
 <body>
 
 @include('header')
+@include('side_nav')
 @yield('content')
 
 </body>

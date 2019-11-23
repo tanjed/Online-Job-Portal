@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2" id="side-nav" style="background: black;">dbd</div>
+            <div class="col-md-2"></div>
             <div class="col-md-10">
                 <center><h1>Recent Job Posting</h1></center>
                 <table class="table table-striped">
@@ -25,8 +25,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $height = $(window).height() - 46;
-        $('#side-nav').css("height",$height+"px");
-    </script>
 @stop

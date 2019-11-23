@@ -46,4 +46,9 @@ class ApplicantAuthController extends Controller
         }
         return back()->withErrors(["msg" => "Invalid Email or Password"])->withInput($request->only('email'));
     }
+    public function logout(Request $request){
+        auth('applicant')->logout();
+        $request->session()->invalidate();
+        return redirect()->intended(route('applicant.login.show'));
+    }
 }
