@@ -1,5 +1,4 @@
 @extends('master')
-@include('applicant.header')
 @section('content')
     <div class="container-fluid">
         <div class="row">

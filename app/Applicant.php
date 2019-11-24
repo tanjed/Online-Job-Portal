@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Applicant extends Authenticatable
 {
     protected $guarded = ['id'];
+    protected $guard = 'applicant';
 
     public function scopeApplied($query,$id){
         return $query->where('job_id',$id);
@@ -17,5 +18,8 @@ class Applicant extends Authenticatable
     }
     public function skills(){
         return $this->hasMany(Skill::class);
+    }
+    public function getUser(){
+        return auth('applicant')->user();
     }
 }

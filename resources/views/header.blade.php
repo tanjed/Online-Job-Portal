@@ -6,12 +6,16 @@
 
     <!-- Links -->
     <ul class="navbar-nav" style="width: 100%;">
-        @auth
+        @auth('applicant')
             <li class="nav-item" style="margin-left: 80%">
-                <a class="nav-link text-light disabled">{{auth('company')->user()->business_name}}</a>
+                <a class="nav-link text-light">{{auth('applicant')->user()->first_name}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="{{URL::to(route('company.logout'))}}" >Logout</a>
+            </li>
+            @else
+            <li class="nav-item" style="margin-left: 80%">
+                <a class="nav-link text-light disabled">Hello</a>
             </li>
         @endauth
     </ul>

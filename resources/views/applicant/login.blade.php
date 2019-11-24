@@ -1,5 +1,4 @@
 @extends('master')
-@include('applicant.header')
 @section('content')
     <div class="container">
         <div class="row" style="min-height: 800px">

@@ -1,5 +1,4 @@
 @extends('master')
-@include('company.header')
 @section('content')
     <div class="container-fluid">
       <div class="row">

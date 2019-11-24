@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','IndexUseController@showIndex');
+Route::get('/set/ApplicantPortal','IndexUseController@setApplicantPortal')->name('setApplicantPortal');
+Route::get('/set/CompanyPortal','IndexUseController@setCompanyPortal')->name('setCompanyPortal');
 
 Route::group(['prefix' => 'company' ,'middleware' => 'company-auth'],function (){
 
