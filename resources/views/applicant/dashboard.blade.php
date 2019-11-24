@@ -5,6 +5,9 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
+                @if(Session::has('message'))
+                    <p id="alert" class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                @endif
                 <center><h1 style="padding: 20px;background: aqua">Recent Job Posting</h1></center>
                 <table class="table table-striped">
                     <thead class="text-center">
@@ -26,4 +29,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $().ready(function(){
+            $('#alert').delay(1500).hide(1000);
+        });
+    </script>
 @stop

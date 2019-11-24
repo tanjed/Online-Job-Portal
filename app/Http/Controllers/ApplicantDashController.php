@@ -33,8 +33,12 @@ class ApplicantDashController extends Controller
                 'applicant_id' => $applicant_id,
                 'job_id'       => $job_id,
             ]);
-            return redirect(route('applicant.edit',$applicant_id));
+            \Session::flash('message', 'Successfully Applied ');
+            \Session::flash('alert-class', 'alert-Success');
+            return redirect(route('applicant.dashboard.show',$applicant_id));
         }else{
+            \Session::flash('message', 'Upload Your Resume First');
+            \Session::flash('alert-class', 'alert-danger');
             return redirect(route('applicant.edit',$applicant_id));
         }
     }
@@ -49,6 +53,7 @@ class ApplicantDashController extends Controller
             'last_name' => 'required',
             'email' => 'required|email',
             'profile_pic' => 'image|mimes:jpeg,png,jpg',
+           'resume' => 'mimes:pdf',
         ]);
 
        try{
@@ -74,15 +79,21 @@ class ApplicantDashController extends Controller
                $request->resume->move($path, $resumeName);
            }
            $applicant->save();
+           \Session::flash('message', 'Update Successful');
+           \Session::flash('alert-class', 'alert-Success');
 
 
        }catch (\Exception $exception){
-
+           \Session::flash('message', 'Update Failed');
+           \Session::flash('alert-class', 'alert-danger');
        }
-        return back()->with('success','You have successfully upload image.');
+        return redirect(route('applicant.dashboard.show'));
 
     }
     public function addSkill(Request $request){
+        $this->validate($request,[
+           'skill' =>'required'
+        ]);
         $id = auth('applicant')->user()->id;
         try{
             Skill::create([

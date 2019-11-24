@@ -7,6 +7,17 @@
             <div class="col-md-10">
                 <center><h1 style="padding: 20px;background: aqua">Edit Your Profile</h1></center>
                 <hr>
+                @if(Session::has('message'))
+                    <p id="alert" class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                @endif
+                @if(!empty($errors))
+                    <div class="error-log" style="margin-top:5px;">
+                        @foreach($errors->all() as $error)
+                            <small class="text-danger">* {{$error}}</small><br>
+                        @endforeach
+                    </div>
+                @endif
+
                 <form action="{{URL::to('applicant/'.$applicant->id.'/update')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="row">
@@ -75,6 +86,18 @@
                     </div>
                 </div>
             </div>
+            @if(!empty($errors))
+                <div class="error-log" style="margin-top:5px;">
+                    @foreach($errors->all() as $error)
+                        <small class="text-danger">* {{$error}}</small><br>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
+    <script>
+        $().ready(function(){
+            $('#alert').delay(1500).hide(1000);
+        });
+    </script>
 @stop
