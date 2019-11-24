@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'applicant',
-        'passwords' => 'users',
+        'guard' => 'company',
+        'passwords' => 'applicant',
     ],
 
     /*
@@ -44,7 +44,6 @@ return [
         'company-api' => [
             'driver' => 'token',
             'provider' => 'companies',
-            'hash' => false,
         ],
         'applicant' => [
             'driver' => 'session',
@@ -54,7 +53,6 @@ return [
         'applicant-api' => [
             'driver' => 'token',
             'provider' => 'applicants',
-            'hash' => false,
         ],
     ],
 
@@ -108,8 +106,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'applicant' => [
+            'provider' => 'applicants',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('');
+    return view('index');
 });
 
 Route::group(['prefix' => 'company' ,'middleware' => 'company-auth'],function (){
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'company' ,'middleware' => 'company-auth'],function ()
     Route::post('/post/job','CompanyDashController@postJob')->name('post.job');
     Route::get('/show/resume/{id}','CompanyDashController@showPDF');
 
-    Route::get('/logout','CompanyAuthController@logout');
+    Route::get('/logout','CompanyAuthController@logout')->name('company.logout');
 
 });
 Route::get('/company/login','CompanyAuthController@showLogin')->name('company.login.show');
@@ -42,13 +42,14 @@ Route::group(['prefix' => 'applicant','middleware' => 'applicant-auth'],function
     Route::get('/dashboard','ApplicantDashController@showDashboard')->name('applicant.dashboard.show');
     Route::get('/{id}/edit','ApplicantDashController@edit')->name('applicant.edit');
     Route::post('/{id}/update','ApplicantDashController@update')->name('applicant.update');
-
     Route::get('/job/{job}/description','ApplicantDashController@showJobDescription')->name('job.description');
+    Route::get('/job/{id}/apply','ApplicantDashController@applyJob')->name('job.apply');
+
     Route::get('/job/{id}/apply','ApplicantDashController@applyJob')->name('job.apply');
 
     Route::post('/add/skill','ApplicantDashController@addSkill')->name('skill.add');
 
-    Route::get('/logout','ApplicantAuthController@logout');
+    Route::get('/logout','ApplicantAuthController@logout')->name('applicant.logout');
 
 });
 Route::get('applicant/login','ApplicantAuthController@showLogin')->name('applicant.login.show');

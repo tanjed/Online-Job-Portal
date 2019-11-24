@@ -1,9 +1,12 @@
 @extends('master')
+@include('applicant.header')
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
+                <center><h1 style="padding: 20px;background: aqua">Edit Your Profile</h1></center>
+                <hr>
                 <form action="{{URL::to('applicant/'.$applicant->id.'/update')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="row">
@@ -46,7 +49,8 @@
                     <button class="btn btn-success" type="submit">Update</button>
                 </form>
                 <hr>
-                <center><h1>Add Skills</h1></center>
+                <center><h1 style="padding: 20px;background: aqua">Add Skills</h1></center>
+                <hr>
                 <div class="row">
                     <div class="col-md-7">
                         <center>Input Skills Here</center>

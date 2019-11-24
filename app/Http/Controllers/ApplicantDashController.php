@@ -33,9 +33,9 @@ class ApplicantDashController extends Controller
                 'applicant_id' => $applicant_id,
                 'job_id'       => $job_id,
             ]);
-            return redirect(route('applicant.dashboard.show'));
+            return redirect(route('applicant.edit',$applicant_id));
         }else{
-            return redirect(route('applicant.dashboard.show'));
+            return redirect(route('applicant.edit',$applicant_id));
         }
     }
     public function edit($id){

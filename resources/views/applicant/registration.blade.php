@@ -1,4 +1,5 @@
 @extends('master')
+@include('applicant.header')
 @section('content')
     <div class="container">
         <div class="row" style="min-height: 800px">
@@ -26,6 +27,7 @@
                             <input type="password" class="form-control"  name="password" placeholder="Password">
                         </div>
                         <center><button type="submit" class="btn btn-primary" style="width: 50%;">Submit</button></center>
+                        <center><small style="padding: 5px;">Already have an account? <a href="{{route('applicant.login.show')}}">Login</a></small></center>
                         @if(!empty($errors))
                             <div class="error-log" style="margin-top:5px;">
                                 @foreach($errors->all() as $error)
